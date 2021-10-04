@@ -1,0 +1,31 @@
+vector<int> Solution::findPerm(const string A, int B) {
+    int d=0;
+    for(int i = 0; i<B-1; i++)
+    {
+        if(A[i] == 'D')
+        {
+            d++;
+        }
+    }
+    int j = d+1;
+    vector<int> v(B);
+    
+    v[0] = j;
+    j = j+1;
+    
+    for(int i = 1; i<B; i++)
+    {
+        if(A[i-1] == 'I')
+        {
+            v[i] = j;
+            j=j+1;
+        }
+        if(A[i-1] == 'D')
+        {
+            v[i] = d;
+            d=d-1;
+        }
+    }
+    return v;
+    
+}
